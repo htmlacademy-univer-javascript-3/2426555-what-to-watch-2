@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface GenreProps {
   genre: string;
@@ -10,9 +11,9 @@ const GenreComponent: React.FC<GenreProps> = ({ genre, isActive }) => (
       isActive ? '--active' : ''
     }`}
   >
-    <a href="#" className="catalog__genres-link">
+    <Link to="#" className="catalog__genres-link">
       {genre}
-    </a>
+    </Link>
   </li>
 );
 

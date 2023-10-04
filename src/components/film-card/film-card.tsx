@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from '../header';
 import { FilmCardButtons } from './components/film-card-buttons';
 import { FilmProps } from './types';
-
+import { Poster } from '../poster';
 
 interface FilmCardProps {
   film: FilmProps;
@@ -16,26 +16,14 @@ const FilmCardComponent: React.FC<FilmCardProps> = ({ film }) => {
   return (
     <section className="film-card">
       <div className="film-card__bg">
-        <img
-          src={img.bgSrc}
-          alt={img.alt}
-        />
+        <img src={img.bgSrc} alt={img.alt} />
       </div>
 
-      <h1 className="visually-hidden">WTW</h1>
-
-      <Header />
+      <Header className="film-card__head" />
 
       <div className="film-card__wrap">
         <div className="film-card__info">
-          <div className="film-card__poster">
-            <img
-              src={img.src}
-              alt={img.alt}
-              width={WIDTH}
-              height={HEIGHT}
-            />
-          </div>
+          <Poster src={img.src} alt={img.alt} width={WIDTH} height={HEIGHT} />
 
           <div className="film-card__desc">
             <h2 className="film-card__title">{title}</h2>

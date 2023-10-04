@@ -1,4 +1,4 @@
-export enum RouteLinks {
+export const enum RouteLinks {
     MAIN = '/',
     LOGIN = '/login',
     MY_LIST = '/mylist',
