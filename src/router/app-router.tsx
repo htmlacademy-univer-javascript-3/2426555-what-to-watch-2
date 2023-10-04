@@ -9,10 +9,11 @@ import { Player } from '../pages/player';
 import { SignIn } from '../pages/signin';
 import { Page404 } from '../pages/page-404';
 import { RouteLinks } from './consts';
-
+import { ScrollToTop } from '../components/scroll-to-top';
 
 const AppRouter: React.FC = () => (
   <BrowserRouter>
+    <ScrollToTop />
     <Routes>
       <Route path={RouteLinks.MAIN} element={<Main />} />
       <Route path={RouteLinks.LOGIN} element={<SignIn />} />
