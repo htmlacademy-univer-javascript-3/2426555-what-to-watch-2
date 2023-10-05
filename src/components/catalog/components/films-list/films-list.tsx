@@ -3,11 +3,13 @@ import { filmsInfo } from '../../../../mocs/films';
 import { SmallFilmCard } from './small-film-card';
 
 interface FilmsListComponentProps {
-  length?: number;
+  maxLength?: number;
+  genre?: string;
 }
 
 const FilmsListComponent: React.FC<FilmsListComponentProps> = ({
-  length = filmsInfo.length,
+  maxLength = filmsInfo.length,
+  genre,
 }) => {
   const [activeFilm, setActiveFilm] = useState<number | null>(null);
 
@@ -19,9 +21,13 @@ const FilmsListComponent: React.FC<FilmsListComponentProps> = ({
     setActiveFilm(null);
   };
 
+  const filteredFilms = genre
+    ? filmsInfo.filter((film) => film.genre === genre)
+    : filmsInfo;
+
   return (
     <div className="catalog__films-list">
-      {filmsInfo.slice(0, length).map((film) => (
+      {filteredFilms.slice(0, maxLength).map((film) => (
         <SmallFilmCard
           film={film}
           key={film.id}
