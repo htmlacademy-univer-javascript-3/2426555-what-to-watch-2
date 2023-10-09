@@ -18,7 +18,7 @@ const CatalogComponent: React.FC<CatalogProps> = ({
 
     {!withoutGenre ? <GenreList /> : null}
 
-    <FilmsList length={listLength} />
+    <FilmsList maxLength={listLength} />
 
     {!withoutButton ? (
       <div className="catalog__more">
