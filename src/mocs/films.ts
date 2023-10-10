@@ -17,7 +17,7 @@ interface FilmDescription {
 }
 
 export interface FilmInfoProps extends FilmProps {
-  genre?: string;
+  genre: string;
   year?: number;
   rating?: number;
   ratingCount?: number;
@@ -38,7 +38,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Horror',
+    genre: 'Comedies',
     year: 2018,
     rating: 7.3,
     ratingCount: 3500,
@@ -59,7 +59,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Drama',
+    genre: 'Crime',
     year: 2018,
     rating: 8.0,
     ratingCount: 4500,
@@ -80,7 +80,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Drama',
+    genre: 'Documentary',
     year: 2015,
     rating: 6.6,
     ratingCount: 2800,
@@ -101,7 +101,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Drama',
+    genre: 'Dramas',
     year: 2004,
     rating: 7.5,
     ratingCount: 3200,
@@ -122,7 +122,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Drama',
+    genre: 'Horror',
     year: 2011,
     rating: 7.5,
     ratingCount: 2700,
@@ -143,7 +143,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Comedy',
+    genre: 'Comedies',
     year: 2014,
     rating: 7.7,
     ratingCount: 3100,
@@ -185,7 +185,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Comedy',
+    genre: 'Comedies',
     year: 2003,
     rating: 6.2,
     ratingCount: 2400,
@@ -269,7 +269,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Comedy',
+    genre: 'Comedies',
     year: 2000,
     rating: 8.3,
     ratingCount: 3900,
@@ -290,7 +290,7 @@ export const filmsInfo: FilmInfoProps[] = [
       'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
-    genre: 'Comedy',
+    genre: 'Comedies',
     year: 2012,
     rating: 7.8,
     ratingCount: 3200,
@@ -463,7 +463,7 @@ export const filmsInfo: FilmInfoProps[] = [
     rating: 8.9,
     ratingCount: 240,
     description: {
-      info: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustaves friend and protege. 
+      info: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustaves friend and protege.
         \nGustave prides himself on providing first-class service to the hotels guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustaves lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
       director: 'Wes Anderson',
       starring: 'Bill Murray, Edward Norton, Jude Law, Willem Dafoe, and other',

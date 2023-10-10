@@ -78,7 +78,11 @@ const PlayerPage: React.FC = () => {
   }, [handleMouseMove, handleMouseUp, isDragging]);
 
   useEffect(() => {
-    const videoElement = videoRef.current as HTMLVideoElement;
+    if (!videoRef.current) {
+      return;
+    }
+
+    const videoElement = videoRef.current;
 
     const handleLoadedMetadata = () => {
       setTime((prevTime) => ({ ...prevTime, duration: videoElement.duration }));
@@ -91,10 +95,8 @@ const PlayerPage: React.FC = () => {
       }));
     };
 
-    if (videoElement) {
-      videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
-      videoElement.addEventListener('timeupdate', handleTimeUpdate);
-    }
+    videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+    videoElement.addEventListener('timeupdate', handleTimeUpdate);
 
     return () => {
       if (videoElement) {
@@ -124,7 +126,10 @@ const PlayerPage: React.FC = () => {
     }
   }, []);
 
-  const exitPlayer = useCallback(() => id && navigate(`/films/${id}`), [id, navigate]);
+  const exitPlayer = useCallback(
+    () => id && navigate(`/films/${id}`),
+    [id, navigate]
+  );
 
   if (!film) {
     return <Navigate to={RouteLinks.NOT_FOUND} />;
