@@ -1,7 +1,11 @@
 import { useMemo } from 'react';
 import { FilmInfoProps, filmsInfo } from '../mocs/films';
 
-const findFilmById = (films: FilmInfoProps[], id: string) => films.find((film) => film.id === +id);
+const SECONDS_IN_HOUR = 3600;
+const SECONDS_IN_MINUTE = 60;
+
+const findFilmById = (films: FilmInfoProps[], id: string) =>
+  films.find((film) => film.id === +id);
 
 export const useFilmById = (id = '') => {
   const film = useMemo(() => findFilmById(filmsInfo, id), [id]);
@@ -18,15 +22,14 @@ export const useFilmRating = (rating = 0) => {
     return 'Good';
   } else if (rating >= 6) {
     return 'Average';
-  } else {
-    return 'Below average';
   }
+  return 'Below average';
 };
 
 export const formatTime = (timeInSeconds: number) => {
-  const hours = Math.floor(timeInSeconds / 3600);
-  const minutes = Math.floor((timeInSeconds % 3600) / 60);
-  const seconds = Math.floor(timeInSeconds % 60);
+  const hours = Math.floor(timeInSeconds / SECONDS_IN_HOUR);
+  const minutes = Math.floor((timeInSeconds % SECONDS_IN_HOUR) / SECONDS_IN_MINUTE);
+  const seconds = Math.floor(timeInSeconds % SECONDS_IN_MINUTE);
 
   const formattedHours = String(hours).padStart(2, '0');
   const formattedMinutes = String(minutes).padStart(2, '0');
@@ -34,4 +37,3 @@ export const formatTime = (timeInSeconds: number) => {
 
   return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 };
-

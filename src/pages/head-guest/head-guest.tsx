@@ -18,7 +18,7 @@ const HeadGuestPage: React.FC = () => (
       </div>
 
       <div className="user-block">
-        <Link to="sign-in.html" className="user-block__link">
+        <Link to="/" className="user-block__link">
           Sign in
         </Link>
       </div>

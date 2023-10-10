@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { filmsInfo } from '../../../../mocs/films';
 import { SmallFilmCard } from './small-film-card';
+import { useAppSelector } from '../../../../hooks/store';
 
 interface FilmsListComponentProps {
   maxLength?: number;
@@ -11,6 +12,9 @@ const FilmsListComponent: React.FC<FilmsListComponentProps> = ({
   maxLength = filmsInfo.length,
   genre,
 }) => {
+  const stateGenreFilms = useAppSelector((state) => state.genreFilms);
+  const stateFilms = useAppSelector((state) => state.films);
+
   const [activeFilm, setActiveFilm] = useState<number | null>(null);
 
   const handleCardHover = (filmId: number) => {
@@ -22,8 +26,8 @@ const FilmsListComponent: React.FC<FilmsListComponentProps> = ({
   };
 
   const filteredFilms = genre
-    ? filmsInfo.filter((film) => film.genre === genre)
-    : filmsInfo;
+    ? stateFilms.filter((film) => film.genre === genre)
+    : stateGenreFilms;
 
   return (
     <div className="catalog__films-list">
