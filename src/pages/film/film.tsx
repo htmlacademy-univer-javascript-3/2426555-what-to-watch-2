@@ -1,43 +1,60 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Header } from '../../components/header';
 import { FilmCardButtons } from '../../components/film-card/components/film-card-buttons';
 import { FilmsList } from '../../components/catalog/components/films-list';
 import { Footer } from '../../components/footer';
 import { Navigate, useParams } from 'react-router-dom';
-import { useFilmById } from '../../hooks/films';
 import { RouteLinks } from '../../router/consts';
 import { Poster } from '../../components/poster';
 import { FilmDescription } from '../../components/film-descrtipion/film-description';
+import { useAppDispatch, useAppSelector } from '../../hooks/store';
+import { fetchFilm } from '../../store/api-action';
+import { Spinner } from '../../components/spinner/spinner';
 
 const FEW_FILM_LIST = 4;
 
 const FilmPage: React.FC = () => {
   const { id } = useParams();
-  const film = useFilmById(id);
+  const dispatch = useAppDispatch();
+  const film = useAppSelector((state) => state.film);
+  const isLoading = useAppSelector((state) => state.isFilmLoading);
 
-  if (!film) {
+  useLayoutEffect(() => {
+    if (id) {
+      dispatch(fetchFilm(id));
+    }
+  }, [id, dispatch]);
+
+  if (isLoading || !film) {
+    return <Spinner fullDisplay />;
+  }
+
+  if ((!film && !isLoading) || !id) {
     return <Navigate to={RouteLinks.NOT_FOUND} />;
   }
 
   return (
     <>
-      <section className="film-card film-card--full">
+      <section
+        className="film-card film-card--full"
+        style={{ backgroundColor: film.backgroundColor }}
+      >
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={film.bgSrc} alt={film.imageSrc} />
+            <img src={film.backgroundImage} alt={film.name} />
           </div>
 
           <Header className="film-card__head" />
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{film.title}</h2>
+              <h2 className="film-card__title">{film.name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{film.genre}</span>
-                <span className="film-card__year">{film.year}</span>
+                <span className="film-card__year">{film.released}</span>
               </p>
 
-              <FilmCardButtons reviewButton />
+              <FilmCardButtons filmId={film.id} reviewButton />
             </div>
           </div>
         </div>
@@ -45,10 +62,8 @@ const FilmPage: React.FC = () => {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <Poster
-              src={film.imageSrc}
-              alt={film.alt}
-              width={film.width}
-              height={film.height}
+              src={film.posterImage}
+              alt={film.name}
               className="film-card__poster--big"
             />
 

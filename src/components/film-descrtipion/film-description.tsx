@@ -1,12 +1,12 @@
 import { FC, memo, useEffect, useMemo, useState } from 'react';
-import { FilmInfoProps } from '../../mocs/films';
 import { Tabs } from './tabs';
 import { Overview } from './tab-panels/overview';
 import { Details as FilmDetails } from './tab-panels/details';
 import { Reviews as FilmReviews } from './tab-panels/reviews';
+import { Film } from '../../types/film';
 
 interface FilmDescriptionProps {
-  film: FilmInfoProps;
+  film: Film;
 }
 
 const enum TabsDTO {
