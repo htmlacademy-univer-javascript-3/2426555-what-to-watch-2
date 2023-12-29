@@ -3,6 +3,7 @@ import { ReducerName } from '../../types/reducer-name';
 import { Genre } from '../../types/genre';
 import { MainReducerState } from '../../types/main-reducer-state';
 import {
+  addReview,
   fetchFavoriteFilms,
   fetchFilms,
   fetchPromo,
@@ -69,6 +70,10 @@ export const mainReducer = createSlice({
       .addCase(logout.fulfilled, (state) => {
         state.favoriteFilms = [];
         state.favoriteCount = 0;
+      }).addCase(addReview.fulfilled, (state, action) => {
+        state.error = null;
+
+        action.payload.backToFilm();
       });
   },
 });
