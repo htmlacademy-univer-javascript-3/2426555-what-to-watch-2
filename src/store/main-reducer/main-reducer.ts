@@ -21,6 +21,7 @@ const initialState: MainReducerState = {
   promo: null,
   favoriteFilms: [],
   favoriteCount: 0,
+  isPromoLoading: false,
 };
 
 export const mainReducer = createSlice({
@@ -60,6 +61,14 @@ export const mainReducer = createSlice({
       })
       .addCase(fetchPromo.fulfilled, (state, action) => {
         state.promo = action.payload;
+        state.isPromoLoading = false;
+
+      })
+      .addCase(fetchPromo.rejected, (state) => {
+        state.isPromoLoading = false;
+      })
+      .addCase(fetchPromo.pending, (state) => {
+        state.isPromoLoading = true;
       })
       .addCase(setFavorite.fulfilled, (state, action) => {
         if (state.promo && action.payload.id === state.promo.id) {
